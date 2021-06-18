@@ -14,69 +14,81 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="calculator-wrapper container">
+    <div class="calculator container">
       <div class="row no-gutters">
         <div class="col-12 display"><h1>0</h1></div>
-        <div class="col-3">
-          <button class="operations" id="buttons">+</button>
+
+        <div class="col-6">
+          <button class="keys topButtons" id="clear" data-action="clear">
+            Clear
+          </button>
         </div>
         <div class="col-3">
-          <button class="operations" id="buttons">-</button>
+          <button class="keys topButtons" id="percentage">%</button>
         </div>
         <div class="col-3">
-          <button class="operations" id="buttons">x</button>
-        </div>
-        <div class="col-3">
-          <button class="operations" id="buttons">/</button>
+          <button class="keys operations" id="division" data-action="divide">
+            ÷
+          </button>
         </div>
 
         <div class="col-3">
-          <button class="digits" id="buttons">7</button>
+          <button class="keys digits" id="seven">7</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">8</button>
+          <button class="keys digits" id="eight">8</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">9</button>
+          <button class="keys digits" id="nine">9</button>
         </div>
         <div class="col-3">
-          <button class="equalSign" id="buttons">=</button>
+          <button class="keys operations" id="multiply" data-action="multiply">
+            ×
+          </button>
+        </div>
+
+        <div class="col-3">
+          <button class="keys digits" id="four">4</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">4</button>
+          <button class="keys digits" id="five">5</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">5</button>
+          <button class="keys digits" id="six">6</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">6</button>
+          <button class="keys operations" id="minus" data-action="subtract">
+            −
+          </button>
+        </div>
+
+        <div class="col-3">
+          <button class="keys digits" id="one">1</button>
         </div>
         <div class="col-3">
-          <button class="equalSign" id="buttons">=</button>
+          <button class="keys digits" id="two">2</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">1</button>
+          <button class="keys digits" id="three">3</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">2</button>
+          <button class="keys operations" id="addition" data-action="add">
+            +
+          </button>
+        </div>
+
+        <div class="col-6">
+          <button class="keys digits" id="zero">0</button>
         </div>
         <div class="col-3">
-          <button class="digits" id="buttons">3</button>
+          <button class="keys decimal" id="decimal" data-action="decimal">
+            .
+          </button>
         </div>
         <div class="col-3">
-          <button class="equalSign" id="buttons">=</button>
-        </div>
-        <div class="col-3">
-          <button class="digits" id="buttons">0</button>
-        </div>
-        <div class="col-3">
-          <button class="digits" id="buttons">.</button>
-        </div>
-        <div class="col-3">
-          <button class="digits" id="buttons">AC</button>
-        </div>
-        <div class="col-3">
-          <button class="equalSign lastSign" id="buttons">=</button>
+          <button class="keys operations" id="equal" data-action="calculate">
+            =
+          </button>
         </div>
       </div>
     </div>
