@@ -16,18 +16,13 @@ body {
   border-radius: 5px;
 }
 
-h1 {
-  font-size: 60px;
-  margin-right: 10px;
-}
-
-.keys,
+.buttons,
 .display {
   width: 100%;
   height: 80px;
 }
 
-.keys:hover {
+.buttons:hover {
   cursor: pointer;
 }
 
