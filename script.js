@@ -29,6 +29,7 @@ keys.addEventListener("click", (event) => {
       action === "divide"
     ) {
       key.classList.add("is-depressed");
+      calculator.dataset.previousKeyType = "operator";
     }
 
     Array.from(key.parentNode.children).forEach((key) =>
@@ -41,13 +42,13 @@ const calculate = (n1, operator, n2) => {
   let result = "";
 
   if (operator === "add") {
-    result = n1 + n2;
+    result = parseFloat(n1) + parseFloat(n2);
   } else if (operator === "subtract") {
-    result = n1 - n2;
+    result = parseFloat(n1) - parseFloat(n2);
   } else if (operator === "multiply") {
-    result = n1 * n2;
+    result = parseFloat(n1) * parseFloat(n2);
   } else if (operator === "divide") {
-    result = n1 / n2;
+    result = parseFloat(n1) / parseFloat(n2);
   }
 
   return result;
