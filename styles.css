@@ -1,3 +1,7 @@
+button:focus {
+  outline: none;
+}
+
 body {
   background-color: rgb(121, 121, 225);
 }
@@ -33,7 +37,8 @@ body {
   margin-top: 7px;
 }
 
-.operations {
+.operations,
+.equal {
   background-color: orange;
 }
 

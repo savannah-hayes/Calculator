@@ -1,26 +1,25 @@
 const calculator = document.querySelector(".calculator");
 const keys = calculator.querySelector(".keys");
 const display = document.querySelector(".display");
-const previousKeyType = calculator.dataset.previousKeyType;
 
 keys.addEventListener("click", (event) => {
   if (event.target.matches("button")) {
     const key = event.target;
     const action = key.dataset.action;
     const keyContent = key.textContent;
-    const displayedNum = display.textContent;
+    const displayedNumber = display.textContent;
     const previousKeyType = calculator.dataset.previousKeyType;
 
     if (!action) {
-      if (displayedNum === "0") {
+      if (displayedNumber === "0" || previousKeyType === "operator") {
         display.textContent = keyContent;
       } else {
-        display.textContent = displayedNum + keyContent;
+        display.textContent = displayedNumber + keyContent;
       }
     }
 
     if (action === "decimal") {
-      display.textContent = displayedNum + ".";
+      display.textContent = displayedNumber + ".";
     }
 
     if (
@@ -32,8 +31,24 @@ keys.addEventListener("click", (event) => {
       key.classList.add("is-depressed");
     }
 
-    Array.from(key.parentNode.children).forEach((k) =>
-      k.classList.remove("is-depressed")
+    Array.from(key.parentNode.children).forEach((key) =>
+      key.classList.remove("is-depressed")
     );
   }
 });
+
+const calculate = (n1, operator, n2) => {
+  let result = "";
+
+  if (operator === "add") {
+    result = n1 + n2;
+  } else if (operator === "subtract") {
+    result = n1 - n2;
+  } else if (operator === "multiply") {
+    result = n1 * n2;
+  } else if (operator === "divide") {
+    result = n1 / n2;
+  }
+
+  return result;
+};
