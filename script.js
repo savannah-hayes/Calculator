@@ -30,8 +30,17 @@ keys.addEventListener("click", (event) => {
       action === "multiply" ||
       action === "divide"
     ) {
+      const firstValue = calculator.dataset.firstValue;
+      const operator = calculator.dataset.operator;
+      const secondValue = displayedNumber;
+      if (firstValue && operator && previousKeyType !== "operator") {
+        display.textContent = calculate(firstValue, operator, secondValue);
+      }
+
       key.classList.add("is-depressed");
       calculator.dataset.previousKeyType = "operator";
+      calculator.dataset.firstValue = displayedNumber;
+      calculator.dataset.operator = action;
     }
 
     Array.from(key.parentNode.children).forEach((key) =>
