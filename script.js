@@ -16,13 +16,15 @@ keys.addEventListener("click", (event) => {
       } else {
         display.textContent = displayedNumber + keyContent;
       }
-    }
-
-    if (action === "decimal") {
-      display.textContent = displayedNumber + ".";
-    }
-
-    if (
+      calculator.dataset.previousKeyType = "number";
+    } else if (action === "decimal") {
+      if (previousKeyType === "operator") {
+        display.textContent = "0.";
+      } else if (!displayedNumber.includes(".")) {
+        display.textContent = displayedNumber + ".";
+      }
+      calculator.dataset.previousKeyType = "decimal";
+    } else if (
       action === "add" ||
       action === "subtract" ||
       action === "multiply" ||
