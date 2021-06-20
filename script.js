@@ -14,7 +14,7 @@ keys.addEventListener("click", (event) => {
 
   const createResultString = (key, displayedNumber, state) => {
     const keyContent = key.textContent;
-    const keyType = getKeyType(key);
+    const { action } = key.dataset;
     const { firstValue, modValue, operator, previousKeyType } = state;
 
     if (keyType === "number") {
@@ -23,6 +23,26 @@ keys.addEventListener("click", (event) => {
         previousKeyType === "calculate"
         ? keyContent
         : displayedNum + keyContent;
+    }
+  };
+
+  const updateCalculatorState = (key, calculator) => {
+    const keyType = getKeyType(key);
+    calculator.dataset.previousKeyType = keyType;
+
+    if (keyType === "number") {
+    }
+
+    if (keyType === "decimal") {
+    }
+
+    if (keyType === "operator") {
+    }
+
+    if (keyType === "clear") {
+    }
+
+    if (keyType === "calculate") {
     }
   };
 
