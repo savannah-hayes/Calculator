@@ -39,12 +39,12 @@ body {
   font-size: 40px;
 }
 
-.operations,
-.equal {
+.operations {
   background-color: orange;
 }
 
-.topButtons {
+.topButtons,
+.equal {
   background-color: rgb(210, 210, 210);
 }
 
