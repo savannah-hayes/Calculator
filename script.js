@@ -53,9 +53,9 @@ keys.addEventListener("click", (event) => {
         previousKeyType !== "operator" &&
         previousKeyType !== "calculate"
       ) {
-        const calcValue = calculate(firstValue, operator, secondValue);
-        display.textContent = calcValue;
-        calculator.dataset.firstValue = calcValue;
+        const calculatedValue = calculate(firstValue, operator, secondValue);
+        display.textContent = calculatedValue;
+        calculator.dataset.firstValue = calculatedValue;
       } else {
         calculator.dataset.firstValue = displayedNumber;
       }
@@ -65,8 +65,8 @@ keys.addEventListener("click", (event) => {
       calculator.dataset.previousKeyType = "operator";
       calculator.dataset.operator = action;
 
-      Array.from(key.parentNode.children).forEach((key) =>
-        key.classList.remove("is-depressed")
+      Array.from(key.parentNode.children).forEach((k) =>
+        k.classList.remove("is-depressed")
       );
     } else if (action === "clear") {
       if (key.textContent === "AC") {
@@ -83,7 +83,7 @@ keys.addEventListener("click", (event) => {
     } else if (action === "calculate") {
       let firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
-      let secondValue = displayNumber;
+      let secondValue = displayedNumber;
 
       if (firstValue) {
         if (previousKeyType === "calculate") {
