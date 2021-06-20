@@ -33,13 +33,12 @@ keys.addEventListener("click", (event) => {
     }
 
     if (action === "decimal") {
-      if (previousKeyType === "operator" || previousKeyType === "calculate") {
-        display.textContent = "0.";
-      } else if (!displayedNumber.includes(".")) {
-        display.textContent = displayedNumber + ".";
-      }
-      calculator.dataset.previousKeyType = "decimal";
+      if (!displayedNumber.includes(".")) return displayedNumber + ".";
+      if (previousKeyType === "operator" || previousKeyType === "calculate")
+        return "0.";
+      return displayedNumber;
     }
+    calculator.dataset.previousKeyType = "decimal";
 
     if (
       action === "add" ||
@@ -49,30 +48,27 @@ keys.addEventListener("click", (event) => {
     ) {
       const firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
-      const secondValue = displayedNumber;
 
-      if (
-        firstValue &&
+      return firstValue &&
         operator &&
         previousKeyType !== "operator" &&
         previousKeyType !== "calculate"
-      ) {
-        const calculatedValue = calculate(firstValue, operator, secondValue);
-        display.textContent = calculatedValue;
-        calculator.dataset.firstValue = calculatedValue;
-      } else {
-        calculator.dataset.firstValue = displayedNumber;
-      }
-
-      key.classList.add("is-depressed");
-
-      calculator.dataset.previousKeyType = "operator";
-      calculator.dataset.operator = action;
-      Array.from(key.parentNode.children).forEach((key) =>
-        key.classList.remove("is-depressed")
-      );
+        ? calculate(firstValue, operator, displayedNumber)
+        : displayedNumber;
     }
 
+    display.textContent = calculatedValue;
+    calculator.dataset.firstValue = calculatedValue;
+
+    key.classList.add("is-depressed");
+    calculator.dataset.previousKeyType = "operator";
+    calculator.dataset.operator = action;
+
+    Array.from(key.parentNode.children).forEach((key) =>
+      key.classList.remove("is-depressed")
+    );
+  }
+  {
     if (action === "clear") {
       if (key.textContent === "AC") {
         calculator.dataset.firstValue = "";
