@@ -33,8 +33,10 @@ body {
 .display {
   background-color: rgb(52, 52, 52);
   color: white;
+  padding: 10px;
   text-align: right;
   margin-top: 7px;
+  font-size: 40px;
 }
 
 .operations,
@@ -44,4 +46,17 @@ body {
 
 .topButtons {
   background-color: rgb(210, 210, 210);
+}
+
+.keys *:active::before,
+.keys .is-depressed::before {
+  background-color: #a9a9a9;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: 0.7;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }

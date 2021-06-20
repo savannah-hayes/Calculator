@@ -10,34 +10,38 @@ keys.addEventListener("click", (event) => {
     const displayedNumber = display.textContent;
     const previousKeyType = calculator.dataset.previousKeyType;
 
-    if (!action) {
-      if (action !== "clear") {
-        const clearButton = calculator.querySelector("[data-action=clear]");
-        clearButton.textContent = "AC";
+    const createResultString = () => {
+      // Variables required are:
+      // 1. keyContent
+      // 2. displayedNum
+      // 3. previousKeyType
+      // 4. action
+      if (!action) {
+        return displayedNum === "0" ||
+          previousKeyType === "operator" ||
+          previousKeyType === "calculate"
+          ? keyContent
+          : displayedNum + keyContent;
       }
-      if (
-        displayedNumber === "0" ||
-        previousKeyType === "operator" ||
-        previousKeyType === "calculate"
-      ) {
-        display.textContent = keyContent;
+    };
 
-        if (previousKeyType === "calculate") {
-          calculator.dataset.operator = "";
-          calculator.dataset.modValue = "0";
-        }
-      } else {
-        display.textContent = displayedNumber + keyContent;
-      }
-      calculator.dataset.previousKeyType = "number";
-    } else if (action === "decimal") {
+    calculator.dataset.previousKeyType = "number";
+
+    if (previousKeyType === "calculate") {
+      calculator.dataset.operator = "";
+      calculator.dataset.modValue = "0";
+    }
+
+    if (action === "decimal") {
       if (previousKeyType === "operator" || previousKeyType === "calculate") {
         display.textContent = "0.";
       } else if (!displayedNumber.includes(".")) {
         display.textContent = displayedNumber + ".";
       }
       calculator.dataset.previousKeyType = "decimal";
-    } else if (
+    }
+
+    if (
       action === "add" ||
       action === "subtract" ||
       action === "multiply" ||
@@ -64,11 +68,12 @@ keys.addEventListener("click", (event) => {
 
       calculator.dataset.previousKeyType = "operator";
       calculator.dataset.operator = action;
-
-      Array.from(key.parentNode.children).forEach((k) =>
-        k.classList.remove("is-depressed")
+      Array.from(key.parentNode.children).forEach((key) =>
+        key.classList.remove("is-depressed")
       );
-    } else if (action === "clear") {
+    }
+
+    if (action === "clear") {
       if (key.textContent === "AC") {
         calculator.dataset.firstValue = "";
         calculator.dataset.operator = "";
@@ -80,7 +85,14 @@ keys.addEventListener("click", (event) => {
 
       display.textContent = 0;
       calculator.dataset.previousKeyType = "clear";
-    } else if (action === "calculate") {
+    }
+
+    if (action !== "clear") {
+      const clearButton = calculator.querySelector("[data-action=clear]");
+      clearButton.textContent = "AC";
+    }
+
+    if (action === "calculate") {
       let firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
       let secondValue = displayedNumber;
